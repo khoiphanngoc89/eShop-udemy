@@ -1,5 +1,4 @@
 ﻿using Basket.Api.Entities;
-using Basket.Api.Features.Basket.GetBaskets;
 using Carter;
 using Mapster;
 using MediatR;

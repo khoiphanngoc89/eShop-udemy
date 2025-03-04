@@ -1,7 +1,6 @@
 ﻿using Discount.Grpc.Database;
 using Discount.Grpc.Services;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Discount.Grpc;
 
@@ -10,7 +9,7 @@ public static class DependencyInjection
     internal static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
         builder.Services.AddGrpc();
-        
+
         builder.Services.AddDbContext<DiscountDbContext>(opts =>
         {
             var connectionString = builder.Configuration.GetConnectionString("Database");

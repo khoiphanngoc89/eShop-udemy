@@ -1,5 +1,4 @@
 ﻿using BuildingBlocks.Common.Core.Exceptions;
-using Catalog.Api.Entities;
 
 namespace Catalog.Api.Shared;
 

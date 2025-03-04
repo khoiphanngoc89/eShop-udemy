@@ -22,7 +22,7 @@ public sealed class CreateProductCommandValidator
         RuleFor(x => x.ImageFile).NotNull().NotEmpty().WithMessage(ImageFileErrorMessage);
         RuleFor(x => x.Price).GreaterThan(0).WithMessage(PriceErrorMessage);
     }
-}    
+}
 
 public sealed class CreateProductCommandHandler
     (IDocumentSession session)
@@ -45,6 +45,6 @@ public sealed class CreateProductCommandHandler
 
         session.Store(product);
         await session.SaveChangesAsync(cancellationToken);
-        return new (product.Id);
+        return new(product.Id);
     }
 }

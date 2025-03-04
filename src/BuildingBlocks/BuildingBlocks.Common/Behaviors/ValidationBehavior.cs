@@ -17,7 +17,7 @@ public sealed class ValidationBehavior<TRequest, TReponse>
             validatedResults.Where(x => x.Errors.Count != 0)
             .SelectMany(x => x.Errors);
 
-        if(failures.Any())
+        if (failures.Any())
         {
             throw new ValidationException(failures);
         }

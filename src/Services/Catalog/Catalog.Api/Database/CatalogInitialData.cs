@@ -1,6 +1,4 @@
-﻿using Catalog.Api.Entities;
-using Marten;
-using Marten.Schema;
+﻿using Marten.Schema;
 
 namespace Catalog.Api.Database;
 
@@ -27,7 +25,7 @@ public sealed class CatalogInitialData : IInitialData
                     Description = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
                     ImageFile = "product-1.png",
                     Price = 950.00M,
-                    Categories = new List<string> { "Smart Phone" }
+                    Categories = ["Smart Phone"]
                 },
                 new Product()
                 {
@@ -36,7 +34,7 @@ public sealed class CatalogInitialData : IInitialData
                     Description = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
                     ImageFile = "product-2.png",
                     Price = 840.00M,
-                    Categories = new List<string> { "Smart Phone" }
+                    Categories = ["Smart Phone"]
                 },
                 new Product()
                 {
@@ -45,7 +43,7 @@ public sealed class CatalogInitialData : IInitialData
                     Description = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
                     ImageFile = "product-3.png",
                     Price = 650.00M,
-                    Categories = new List<string> { "White Appliances" }
+                    Categories = ["White Appliances"]
                 },
                 new Product()
                 {
@@ -54,7 +52,7 @@ public sealed class CatalogInitialData : IInitialData
                     Description = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
                     ImageFile = "product-4.png",
                     Price = 470.00M,
-                    Categories = new List<string> { "White Appliances" }
+                    Categories = ["White Appliances"]
                 },
                 new Product()
                 {
@@ -63,7 +61,7 @@ public sealed class CatalogInitialData : IInitialData
                     Description = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
                     ImageFile = "product-5.png",
                     Price = 380.00M,
-                    Categories = new List<string> { "Smart Phone" }
+                    Categories = ["Smart Phone"]
                 },
                 new Product()
                 {
@@ -72,7 +70,7 @@ public sealed class CatalogInitialData : IInitialData
                     Description = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
                     ImageFile = "product-6.png",
                     Price = 240.00M,
-                    Categories = new List<string> { "Home Kitchen" }
+                    Categories = ["Home Kitchen"]
                 },
                 new Product()
                 {
@@ -81,7 +79,7 @@ public sealed class CatalogInitialData : IInitialData
                     Description = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
                     ImageFile = "product-6.png",
                     Price = 240.00M,
-                    Categories = new List<string> { "Camera" }
+                    Categories = ["Camera"]
                 }
             };
 }

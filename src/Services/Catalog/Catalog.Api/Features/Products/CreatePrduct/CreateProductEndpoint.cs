@@ -1,6 +1,4 @@
-﻿using Swashbuckle.AspNetCore.Annotations;
-
-namespace Catalog.Api.Features.Products.CreatePrduct;
+﻿namespace Catalog.Api.Features.Products.CreatePrduct;
 
 public sealed record CreateProductRequest(string Name, List<string> Categories, string Description, string ImageFile, decimal Price);
 public sealed record CreateProductResponse(Guid Id);

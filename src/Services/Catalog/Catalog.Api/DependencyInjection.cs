@@ -65,7 +65,7 @@ public static class DependencyInjection
             opts.CombineLogs = true;
         });
 
-       
+
 
         // cross-cutting concerns
         builder.Services.AddExceptionHandler<CustomExceptionHandler>();

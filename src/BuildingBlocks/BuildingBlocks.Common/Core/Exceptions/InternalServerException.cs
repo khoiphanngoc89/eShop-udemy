@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BuildingBlocks.Common.Core.Exceptions;
+﻿namespace BuildingBlocks.Common.Core.Exceptions;
 
 public class InternalServerException : Exception
 {

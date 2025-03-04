@@ -20,7 +20,7 @@ public sealed class StoreBasketCommandHandler
 
         // Store basket in database - (use Marten upsert - if exist = update, if not = create)
         var cart = await repository.StoreBasket(command.Cart, cancellationToken);
-        return new (cart.UserName);
+        return new(cart.UserName);
     }
 
     private async Task DeductDiscount(ShoppingCart cart, CancellationToken cancellationToken)

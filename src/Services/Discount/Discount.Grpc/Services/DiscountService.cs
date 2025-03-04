@@ -15,12 +15,12 @@ public sealed class DiscountService(DiscountDbContext dbContext,
         var coupon = await dbContext.Coupons.SingleOrDefaultAsync(c => c.ProductName.ToString() == request.ProductName);
 
         coupon ??= new Coupon
-            {
-                ProductName = "No Discount",
-                Amount = 0,
-                Description = "No Discount Desc"
-            };
-        
+        {
+            ProductName = "No Discount",
+            Amount = 0,
+            Description = "No Discount Desc"
+        };
+
         logger.LogInformation("Discount is retrieved for ProductName: {ProductName}, Amount: {Amount}", coupon.ProductName, coupon.Amount);
         var couponModel = coupon.Adapt<CouponModel>();
         return couponModel;
@@ -32,7 +32,7 @@ public sealed class DiscountService(DiscountDbContext dbContext,
         if (coupon is null)
         {
             throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid request object."));
-        }    
+        }
 
         dbContext.Coupons.Add(coupon);
         await dbContext.SaveChangesAsync();

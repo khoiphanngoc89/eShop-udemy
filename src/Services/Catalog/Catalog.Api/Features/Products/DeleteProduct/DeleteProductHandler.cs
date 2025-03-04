@@ -23,6 +23,6 @@ public class DeleteProductCommandHandler
     {
         session.Delete<Product>(command.Id);
         await session.SaveChangesAsync(cancellationToken);
-        return new (true);
+        return new(true);
     }
 }
