@@ -10,7 +10,11 @@ public static class DependencyInjection
     {
         var connectionStrings = configuration.GetConnectionString("Database");
         ArgumentException.ThrowIfNullOrWhiteSpace(connectionStrings);
-        services.AddDbContext<OrderingDbContext>(c =>  c.UseSqlServer(connectionStrings));
+        services.AddDbContext<OrderingDbContext>(c =>
+        {
+            c.AddInterceptors(new AuditableEntityInterceptor());
+            c.UseSqlServer(connectionStrings);
+        });
 
         //services.AddDbContext<OrderContext>(c =>
         //    c.UseSqlServer(configuration.GetConnectionString("OrderingConnectionString")), ServiceLifetime.Singleton);
