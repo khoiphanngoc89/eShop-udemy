@@ -4,7 +4,7 @@ using Ordering.Domain.Entities.Abstractions;
 
 namespace Ordering.Infrastructure.Database.Interceptors;
 
-public class AuditableEntityInterceptor : SaveChangesInterceptor
+public sealed class AuditableEntityInterceptor : SaveChangesInterceptor
 {
     public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
     {

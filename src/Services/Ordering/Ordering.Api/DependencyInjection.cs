@@ -1,4 +1,5 @@
-﻿using Ordering.Application;
+﻿using System.Reflection;
+using Ordering.Application;
 using Ordering.Infrastructure;
 
 namespace Ordering.Api;
@@ -7,13 +8,6 @@ public static class DependencyInjection
 {
     internal static WebApplication ConfigureApiServices(this WebApplicationBuilder builder)
     {
-        //services.AddApplicationServices(configuration);
-        //services.AddInfrastructureServices(configuration);
-        //services.AddControllers();
-        //services.AddSwaggerGen(c =>
-        //{
-        //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ordering.Api", Version = "v1" });
-        //});
         builder.Services.AddServices()
             .AddInfrastructureServices(builder.Configuration)
             .AddApplicationServices();
@@ -22,7 +16,11 @@ public static class DependencyInjection
 
     internal static IServiceCollection AddServices(this IServiceCollection services)
     {
-
+        // register mediator before calling it in domain event interceptors
+        services.AddMediatR(cfg =>
+        {
+            cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+        });
         return services;
     }
 
