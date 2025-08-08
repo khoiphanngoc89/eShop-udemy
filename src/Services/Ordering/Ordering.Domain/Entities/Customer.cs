@@ -2,8 +2,8 @@
 
 public class Customer : EntityBase<CustomerId>
 {
-    public string Name { get; private set; } = default!;
-    public string Email { get; private set; } = default!;
+    public string Name { get; private set; } = null!;
+    public string Email { get; private set; } = null!;
     public static Customer Create(CustomerId id, string name, string email)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(name);

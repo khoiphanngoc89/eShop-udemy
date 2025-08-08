@@ -14,7 +14,7 @@ public static class DependencyInjection
         return builder.Build();
     }
 
-    internal static IServiceCollection AddServices(this IServiceCollection services)
+    private static IServiceCollection AddServices(this IServiceCollection services)
     {
         // register mediator before calling it in domain event interceptors
         services.AddMediatR(cfg =>
