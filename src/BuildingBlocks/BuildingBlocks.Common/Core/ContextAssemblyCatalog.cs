@@ -3,14 +3,10 @@ using System.Reflection;
 
 namespace BuildingBlocks.Common.Core;
 
-public class ContextAssemblyCatalog
-    : DependencyContextAssemblyCatalog
+public sealed class ContextAssemblyCatalog(Assembly assembly)
+        : DependencyContextAssemblyCatalog
 {
-    private readonly Assembly[] _assemblies;
-    public ContextAssemblyCatalog(Assembly assembly)
-    {
-        _assemblies = new[] { assembly };
-    }
+    private readonly Assembly[] _assemblies = [assembly];
 
     public override IReadOnlyCollection<Assembly> GetAssemblies()
     {

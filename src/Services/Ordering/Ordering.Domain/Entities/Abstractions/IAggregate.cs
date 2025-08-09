@@ -2,7 +2,7 @@
 
 namespace Ordering.Domain.Entities.Abstractions;
 
-public interface IAggregate<T> : IAggregate, IEntityBase<T>
+public interface IAggregate<T> : IAggregate, IEntityBase<T>, IAggregateRoot
 {
 }
 

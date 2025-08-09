@@ -1,14 +1,7 @@
-﻿using Ordering.Domain.Entities;
+﻿namespace Ordering.Infrastructure.Database;
 
-namespace Ordering.Infrastructure.Database;
-
-public class OrderingDbContext : DbContext
+public class OrderingDbContext(DbContextOptions<OrderingDbContext> options) : DbContext(options)
 {
-    public OrderingDbContext(DbContextOptions<OrderingDbContext> options)
-        : base(options)
-    {
-    }
-
     public DbSet<Customer> Customers => Set<Customer>();
     public DbSet<Product> Products => Set<Product>();
     public DbSet<Order> Orders => Set<Order>();
