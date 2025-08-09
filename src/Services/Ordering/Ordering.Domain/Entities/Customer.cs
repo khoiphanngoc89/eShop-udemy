@@ -1,6 +1,6 @@
 ﻿namespace Ordering.Domain.Entities;
 
-public class Customer : EntityBase<CustomerId>
+public sealed class Customer : EntityBase<CustomerId>
 {
     public string Name { get; private set; } = null!;
     public string Email { get; private set; } = null!;

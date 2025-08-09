@@ -1,3 +1,3 @@
 ﻿namespace Ordering.Domain.Events;
 
-public record OrderUpdatedDomainEvent(Order Order) : IDomainEvent;
+public sealed record OrderUpdatedDomainEvent(Order Order) : IDomainEvent;

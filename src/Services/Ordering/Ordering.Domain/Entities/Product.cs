@@ -1,6 +1,6 @@
 ﻿namespace Ordering.Domain.Entities;
 
-public class Product : EntityBase<ProductId>
+public sealed class Product : EntityBase<ProductId>
 {
     public string Name { get; private set; } = default!;
     public decimal Price { get; private set; } = default!;

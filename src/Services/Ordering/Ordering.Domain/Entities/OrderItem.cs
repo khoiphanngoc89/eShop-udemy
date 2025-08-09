@@ -1,6 +1,6 @@
 ﻿namespace Ordering.Domain.Entities;
 
-public class OrderItem : EntityBase<OrderItemId>
+public sealed class OrderItem : EntityBase<OrderItemId>
 {
     internal OrderItem(OrderId OrderId, ProductId ProductId, int Quantity, decimal Price)
     {

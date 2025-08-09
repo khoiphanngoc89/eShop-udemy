@@ -3,7 +3,7 @@ using Ordering.Domain.ValueObjects;
 
 namespace Ordering.Domain.Entities;
 
-public class Order : Aggregate<OrderId>
+public sealed class Order : Aggregate<OrderId>
 {
     private readonly List<OrderItem> _items = new();
     public IReadOnlyList<OrderItem> Items => _items.AsReadOnly();
