@@ -133,3 +133,9 @@ $RECYCLE.BIN/
 _NCrunch*
 
 .idea/
+.vs/
+.vscode/
+obj/
+.github/
+.nuget/
+appsettings.Development.json
