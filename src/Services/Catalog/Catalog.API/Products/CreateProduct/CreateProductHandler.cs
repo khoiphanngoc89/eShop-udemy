@@ -4,7 +4,7 @@ using Marten;
 
 namespace Catalog.API.Products.CreateProduct;
 
-public record CreateProductCommand(string Name, List<string> Category, string Description, string ImageFile, decimal Price) :
+public record CreateProductCommand(string Name, List<string> Categories, string Description, string ImageFile, decimal Price) :
     ICommand<CreateProductResult>;
 
 public record CreateProductResult(Guid Id);
@@ -17,7 +17,7 @@ internal class CreateProductCommandHandler(IDocumentSession session)
         var product = new Product
         {
             Name = command.Name,
-            Category = command.Category,
+            Categories = command.Categories,
             Description = command.Description,
             ImageFile = command.ImageFile,
             Price = command.Price
@@ -26,6 +26,6 @@ internal class CreateProductCommandHandler(IDocumentSession session)
         session.Store(product);
         await session.SaveChangesAsync(cancellationToken);
         
-        return new CreateProductResult(Guid.NewGuid());
+        return new CreateProductResult(product.Id);
     }
 }
