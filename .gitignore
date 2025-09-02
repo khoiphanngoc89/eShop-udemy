@@ -131,3 +131,11 @@ $RECYCLE.BIN/
 .DS_Store
 
 _NCrunch*
+
+.idea/
+.vs/
+.vscode/
+obj/
+.github/
+.nuget/
+appsettings.Development.json
