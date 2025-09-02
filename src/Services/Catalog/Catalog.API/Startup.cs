@@ -1,3 +1,5 @@
+using BuildingBlocks.Common.Exceptions.Handlers;
+using BuildingBlocks.Common.Exceptions.Middlewares;
 using Marten;
 using Weasel.Core;
 
@@ -21,8 +23,9 @@ public static class Startup
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-        
-        return builder.Build();;
+
+        builder.Services.AddExceptionHandler<AppExceptionHandler>();
+        return builder.Build();
     }
 
     public static WebApplication AddPipeline(this WebApplication app)
@@ -35,8 +38,9 @@ public static class Startup
         }
         
         app.UseHttpsRedirection();
-        
+
         app.MapCarter();
+        app.UseExceptionHandler(options => { });
         return app;
     }
 }

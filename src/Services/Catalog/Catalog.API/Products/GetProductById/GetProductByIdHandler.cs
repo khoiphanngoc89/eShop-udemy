@@ -7,7 +7,7 @@ namespace Catalog.API.Products.GetProductById;
 public sealed record GetProductByIdQuery(Guid Id) : IQuery<GetProductByIdResult>;
 public sealed record GetProductByIdResult(Product Product);
 
-public class GetProductByIdHandler(IDocumentSession session) : IQueryHandler<GetProductByIdQuery, GetProductByIdResult>
+public class GetProductByIdQueryHandler(IDocumentSession session) : IQueryHandler<GetProductByIdQuery, GetProductByIdResult>
 {
     public async Task<GetProductByIdResult> Handle(GetProductByIdQuery query, CancellationToken cancellationToken)
     {

@@ -6,7 +6,7 @@ namespace Catalog.API.Products.GetProduct;
 
 public sealed record GetProductsQuery() : IQuery<GetProductsResult>;
 public sealed record GetProductsResult(IEnumerable<Product> Products);
-public class GetProductsRequestHandler(IDocumentSession session, ILogger<GetProductsRequestHandler> logger) :
+public class GetProductsQueryHandler(IDocumentSession session, ILogger<GetProductsQueryHandler> logger) :
     IQueryHandler<GetProductsQuery, GetProductsResult>
 {
     public async Task<GetProductsResult> Handle(GetProductsQuery query, CancellationToken cancellationToken)

@@ -1,6 +1,6 @@
 ﻿namespace Catalog.API.Products.GetProductById;
 
-public record GetProductByIdRespose(Guid Id, string Name, List<string> Categories, string Description, string ImageFile, decimal Price);
+public record GetProductByIdRespose(Product Product);
 
 public sealed class GetProductByIdEndpoint : ICarterModule
 {
@@ -13,7 +13,7 @@ public sealed class GetProductByIdEndpoint : ICarterModule
         })
         .WithName("GetProductById")
         .Produces<GetProductByIdRespose>(StatusCodes.Status200OK)
-        .ProducesProblem(StatusCodes.Status500InternalServerError)
+        .ProducesProblem(StatusCodes.Status400BadRequest)
         .WithSummary("Get product by id")
         .WithDescription("Get product by id");
     }

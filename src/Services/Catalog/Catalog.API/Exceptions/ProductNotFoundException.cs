@@ -1,11 +1,17 @@
-﻿namespace Catalog.API.Exceptions;
+﻿using BuildingBlocks.Common.Exceptions;
+using BuildingBlocks.Common.Extensions;
 
-public class ProductNotFoundException : Exception
+namespace Catalog.API.Exceptions;
+
+public sealed class ProductNotFoundException(string message) : NotFoundException(message)
 {
-    public ProductNotFoundException() : base()
+    private const string ProductNotFoundMessage = "Product is not found.";
+
+    public static void ThrowIfNullOrEmpty(IReadOnlyCollection<Product>? obj, string message = ProductNotFoundMessage)
     {
-    }
-    public ProductNotFoundException(string message) : base(message)
-    {
+        if (obj.IsNullOrEmpty())
+        {
+            throw new ProductNotFoundException(message);
+        }
     }
 }
