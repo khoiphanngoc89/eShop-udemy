@@ -1,6 +1,5 @@
 using BuildingBlocks.Common.Exceptions.Handlers;
 using Cortex.Mediator.DependencyInjection;
-using Microsoft.Extensions.Configuration;
 using Scalar.AspNetCore;
 
 namespace Catalog.API;
