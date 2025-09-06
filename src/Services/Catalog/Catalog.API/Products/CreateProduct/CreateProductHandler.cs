@@ -1,6 +1,4 @@
-using BuildingBlocks.Common.Cqrs;
-using Catalog.API.Models;
-using Marten;
+using Cortex.Mediator.Commands;
 
 namespace Catalog.API.Products.CreateProduct;
 

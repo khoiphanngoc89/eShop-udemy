@@ -1,6 +1,6 @@
 global using Carter;
 global using Mapster;
-global using MediatR;
 global using Catalog.API.Models;
-global using BuildingBlocks.Common.Cqrs;
+global using Cortex.Mediator.Queries;
+global using Cortex.Mediator.Commands;
 global using Marten;

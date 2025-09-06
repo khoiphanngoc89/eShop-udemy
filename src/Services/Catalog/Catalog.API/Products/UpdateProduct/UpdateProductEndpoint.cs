@@ -1,4 +1,6 @@
 ﻿
+using Cortex.Mediator;
+
 namespace Catalog.API.Products.UpdateProduct;
 public sealed record UpdateProductRequest(Guid Id, string Name, IEnumerable<string> Categories, string Description, string ImageFile, decimal Price);
 public sealed record UpdateProductResponse(bool IsSuccess);
@@ -6,10 +8,10 @@ public class UpdateProductEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPut("/products", async (UpdateProductRequest request, ISender sender) =>
+        app.MapPut("/products", async (UpdateProductRequest request, IMediator sender) =>
         {
-            var result = await sender.Send(request.Adapt<UpdateProductCommand>());
-            var resp = new UpdateProductResponse(result.IsSuccess);
+            var result = await sender.SendCommandAsync<UpdateProductCommand, UpdateProductResult>(request.Adapt<UpdateProductCommand>());
+            var resp = result.Adapt<UpdateProductResponse>();
             return Results.Ok(resp);
         })
         .WithName("UpdateProduct")

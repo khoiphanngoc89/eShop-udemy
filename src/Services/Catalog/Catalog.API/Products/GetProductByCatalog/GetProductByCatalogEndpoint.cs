@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Cortex.Mediator;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Products.GetProductByCatalog;
 
@@ -8,20 +9,21 @@ public sealed class GetProductByCatalogEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/products/by-catalog", async (ISender sender, [AsParameters] GetProductByCatalogRequest request) =>
+        app.MapGet("/products/by-catalog", async (IMediator sender, [AsParameters] GetProductByCatalogRequest request) =>
         {
             var catalogs = request.Catalogs
                         .Where(c => !string.IsNullOrWhiteSpace(c))
                         .Select(c => c.Trim())
                         .ToList();
-            var result = await sender.Send(new GetProductByCatalogQuery(catalogs));
-            return Results.Ok(new GetProductByCatalogResponse(result.Products));
+            var result = await sender.SendQueryAsync<GetProductByCatalogQuery, GetProductByCatalogResult>(new GetProductByCatalogQuery(catalogs));
+            var resp = result.Adapt<GetProductByCatalogResponse>();
+            return Results.Ok(resp);
         })
-.WithName("GetProductByCatalog")
-.Produces<GetProductByCatalogResponse>(StatusCodes.Status200OK)
-.ProducesProblem(StatusCodes.Status400BadRequest)
-.WithSummary("Get products by catalog")
-.WithDescription("Get products by catalog");
+        .WithName("GetProductByCatalog")
+        .Produces<GetProductByCatalogResponse>(StatusCodes.Status200OK)
+        .ProducesProblem(StatusCodes.Status400BadRequest)
+        .WithSummary("Get products by catalog")
+        .WithDescription("Get products by catalog");
 
 
     }

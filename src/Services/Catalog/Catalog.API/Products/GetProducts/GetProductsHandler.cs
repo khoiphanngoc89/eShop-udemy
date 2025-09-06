@@ -1,8 +1,4 @@
-﻿using BuildingBlocks.Common.Cqrs;
-using Catalog.API.Models;
-using Marten;
-
-namespace Catalog.API.Products.GetProduct;
+﻿namespace Catalog.API.Products.GetProduct;
 
 public sealed record GetProductsQuery() : IQuery<GetProductsResult>;
 public sealed record GetProductsResult(IEnumerable<Product> Products);

@@ -1,6 +1,4 @@
-﻿using BuildingBlocks.Common.Cqrs;
-using Catalog.API.Exceptions;
-using Marten;
+﻿using Catalog.API.Exceptions;
 
 namespace Catalog.API.Products.GetProductById;
 
