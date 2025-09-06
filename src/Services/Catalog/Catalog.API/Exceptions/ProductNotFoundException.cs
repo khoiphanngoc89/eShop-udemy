@@ -14,4 +14,12 @@ public sealed class ProductNotFoundException(string message) : NotFoundException
             throw new ProductNotFoundException(message);
         }
     }
+
+    public static void ThrowIfNull(object? obj, string message = ProductNotFoundMessage)
+    {
+        if (obj is null)
+        {
+            throw new ProductNotFoundException(message);
+        }
+    }
 }

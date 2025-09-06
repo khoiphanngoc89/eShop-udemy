@@ -11,9 +11,9 @@ public sealed class GetProductByCatalogEndpoint : ICarterModule
         app.MapGet("/products/by-catalog", async (ISender sender, [AsParameters] GetProductByCatalogRequest request) =>
         {
             var catalogs = request.Catalogs
-        .Where(c => !string.IsNullOrWhiteSpace(c))
-        .Select(c => c.Trim())
-        .ToList();
+                        .Where(c => !string.IsNullOrWhiteSpace(c))
+                        .Select(c => c.Trim())
+                        .ToList();
             var result = await sender.Send(new GetProductByCatalogQuery(catalogs));
             return Results.Ok(new GetProductByCatalogResponse(result.Products));
         })
